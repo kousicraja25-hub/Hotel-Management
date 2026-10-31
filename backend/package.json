@@ -1,19 +1,22 @@
 {
-  "name": "smart-canteen",
+  "name": "smart-canteen-api",
   "private": true,
   "type": "module",
   "version": "1.0.0",
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
   "scripts": {
-    "build": "npm run build --workspace frontend",
-    "start": "npm run start --workspace backend",
-    "dev": "npm run dev --workspace frontend",
-    "test": "npm run test --workspace backend"
+    "start": "node src/server.js",
+    "test": "node --test",
+    "seed": "node src/seed.js"
   },
-  "engines": {
-    "node": ">=20"
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "zod": "^4.6.7"
   }
 }

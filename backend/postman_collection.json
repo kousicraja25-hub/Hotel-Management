@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "Smart Canteen API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "customerToken", "value": "" },
+    { "key": "adminToken", "value": "" },
+    { "key": "itemId", "value": "" },
+    { "key": "orderId", "value": "" }
+  ],
+  "item": [
+    { "name": "Health", "request": { "method": "GET", "url": "{{baseUrl}}/health" } },
+    { "name": "Register customer", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\":\"Demo Student\",\"email\":\"student@example.com\",\"password\":\"StrongPass123\"}" }, "url": "{{baseUrl}}/auth/register" } },
+    { "name": "Login admin", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"email\":\"admin@example.com\",\"password\":\"<set-your-seeded-admin-password>\"}" }, "url": "{{baseUrl}}/auth/login" } },
+    { "name": "Read menu", "request": { "method": "GET", "url": "{{baseUrl}}/menu" } },
+    { "name": "Customer creates order", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }, { "key": "Authorization", "value": "Bearer {{customerToken}}" }], "body": { "mode": "raw", "raw": "{\"items\":[{\"menuItem\":\"{{itemId}}\",\"quantity\":1}]}" }, "url": "{{baseUrl}}/orders" } },
+    { "name": "Customer order history", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{customerToken}}" }], "url": "{{baseUrl}}/orders" } },
+    { "name": "Admin dashboard", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }], "url": "{{baseUrl}}/admin/dashboard" } }
+  ]
+}
